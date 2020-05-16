@@ -29,6 +29,8 @@ db.states.find({})
 - Corresponds to Select * from states
 
 ## Specify Equality Conditions
+[Query Filters](https://docs.mongodb.com/manual/core/document/#document-query-filter)
+[Query Selectors](https://docs.mongodb.com/manual/reference/operator/query/#query-selectors) like $eq, $gt, $gte
 
 ### Show where x = 
 db.states.find({state: “Alabama”})
@@ -36,30 +38,14 @@ db.states.find({state: “Alabama”})
 
 ### Show where x in (a, b)
 db.states.find({state: { $in: ["Connecticut", "New York"] }})
+- corresponds to Select * from states where state in ("Connecticut", "New York")
 
-show 1 row from a specified collection
-db.states.findOne()
+### Show where x in (a, b)
+db.states.find({state: { $in: ["Connecticut", "New York"] }})
 
-show 1 row from a specified collection
-db.states.findOne()
+## Specify And Conditions
+[Comparison Operators](https://docs.mongodb.com/manual/reference/operator/query-comparison/#query-selectors-comparison)
 
-show 1 row from a specified collection
-db.states.findOne()
-
-show 1 row from a specified collection
-db.states.findOne()
-
-show 1 row from a specified collection
-db.states.findOne()
-
-show 1 row from a specified collection
-db.states.findOne()
-
-show 1 row from a specified collection
-db.states.findOne()
-
-show 1 row from a specified collection
-db.states.findOne()
-
-show 1 row from a specified collection
-db.states.findOne()
+### Show where x = a AND y = b
+db.inventory.find( { status: "A", qty: { $lt: 30 } } )
+- corresponds to SELECT * FROM inventory WHERE status = "A" AND qty < 30
