@@ -62,3 +62,7 @@ db.inventory.find( {
 } )
 - corresponds to SELECT * FROM inventory WHERE status = "A" AND ( qty < 30 OR item LIKE "p%")
 
+## Specify nested equality
+db.inventory.find( { "size.h": { $lt: 15 } } )
+- corresponds to Select * from inventory where ... well.... size.h is less than 15
+
