@@ -34,8 +34,8 @@ db.states.find({})
 db.states.find({state: “Alabama”})
 - corresponds to Select * from states where state = “Alabama”
 
-show 1 row from a specified collection
-db.states.findOne()
+### Show where x in (a, b)
+db.states.find({state: { $in: ["Connecticut", "New York"] }})
 
 show 1 row from a specified collection
 db.states.findOne()
