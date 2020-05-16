@@ -49,3 +49,8 @@ db.states.find({state: { $in: ["Connecticut", "New York"] }})
 ### Show where x = a AND y = b
 db.inventory.find( { status: "A", qty: { $lt: 30 } } )
 - corresponds to SELECT * FROM inventory WHERE status = "A" AND qty < 30
+
+## Specify Or Conditions
+### Show where x = a AND y = b
+db.inventory.find( { $or: [ { status: "A" }, { qty: { $lt: 30 } } ] } )
+- corresponds to SELECT * FROM inventory WHERE status = "A" OR qty < 30
