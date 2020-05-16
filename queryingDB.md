@@ -54,3 +54,11 @@ db.inventory.find( { status: "A", qty: { $lt: 30 } } )
 ### Show where x = a AND y = b
 db.inventory.find( { $or: [ { status: "A" }, { qty: { $lt: 30 } } ] } )
 - corresponds to SELECT * FROM inventory WHERE status = "A" OR qty < 30
+
+## Specify And as well as Or conditions
+db.inventory.find( {
+     status: "A",
+     $or: [ { qty: { $lt: 30 } }, { item: /^p/ } ]
+} )
+- corresponds to SELECT * FROM inventory WHERE status = "A" AND ( qty < 30 OR item LIKE "p%")
+
