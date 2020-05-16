@@ -1,4 +1,5 @@
 # Mongo Commands
+https://docs.mongodb.com/manual/tutorial/query-documents/
 
 ### Turn On
 turn on mongo server, connect to local db
@@ -28,7 +29,8 @@ db.states.find({})
 - Corresponds to Select * from states
 
 ## Specify Equality Conditions
-show 1 row from a specified collection
+
+### Show where x = 
 db.states.find({state: “Alabama”})
 - corresponds to Select * from states where state = “Alabama”
 
