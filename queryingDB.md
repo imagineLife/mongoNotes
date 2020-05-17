@@ -9,6 +9,9 @@ https://docs.mongodb.com/manual/tutorial/query-documents/
   - [Specify Or Conditions](#specify-or-conditions)
   - [Specify And as well as Or Conditions](#specify-and-as-well-as-or-conditions)
   - [Specify Nested Equality](#specify-nested-equality)
+  - [Projecting Fields to return from a query](#projecting-fields-to-return-from-a-query)
+  - [Aliasing Fields](#aliasing-fields)
+	  - [Nested field as a single key](#nested-field-as-a-single-key)
 
 ## Getting Up And Running
 ### Turn On
@@ -38,6 +41,10 @@ select ALL docs in the collection
 db.states.find({})
 - Corresponds to Select * from states
 
+## Connecting to DB Through CLI
+### Local DB
+- 
+### Remote (Atlas) DB
 
 ## Querying
 ### Specify Equality Conditions
@@ -88,5 +95,18 @@ returns all documents that match the query. In the result set, only
 the item, status and, by default, the _id fields return in the 
 matching documents.
 ```
+
+### Naming fields
 db.inventory.find( { status: "A" }, { item: 1, status: 1 } )
 - corresponds to Select _id, item status from inventory where status = "A"
+- **NOTE** the _id field returns in the result set by default
+
+### Hiding the _id field
+db.collection.find({whereClause: whereValue}, { item: 1, status: 1, _id: 0 })
+**NOTE** the ```_id: 0``` is the command to "hide" the _id field from the result set
+
+
+## Aliasing Fields
+### nested field as a single key
+
+db.states.aggregate([{$project: {_id: 0, state: 1, percentBelowPovertyMale: "$percentBelowPoverty.gender.male" }}])
